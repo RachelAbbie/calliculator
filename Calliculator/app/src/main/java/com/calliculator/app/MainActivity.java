@@ -7,6 +7,9 @@ import org.mariuszgromada.math.mxparser.*;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,6 +27,27 @@ public class MainActivity extends AppCompatActivity {
 
         display = findViewById(R.id.input);
         display.setShowSoftInputOnFocus(false);
+        display.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
 
         display.setOnClickListener(new View.OnClickListener() {
             @Override
